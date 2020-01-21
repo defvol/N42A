@@ -1,0 +1,28 @@
+{
+  "name": "N42A",
+  "version": "0.0.0",
+  "description": "Pollock's lost work via Generative Design",
+  "scripts": {
+    "start": "npm run watch",
+    "watch": "budo --host localhost --dir . --open --live --watch-glob '**/*.{html,css,js}'"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/defvol/N42A.git"
+  },
+  "keywords": [
+    "processing",
+    "p5",
+    "p5.js",
+    "generative",
+    "computational",
+    "design"
+  ],
+  "contributors": [],
+  "homepage": "https://github.com/defvol/N42A.git",
+  "dependencies": {},
+  "devDependencies": {
+    "budo": "^11.6.3"
+  }
+}
