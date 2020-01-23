@@ -16,6 +16,7 @@ let stopToggle = false;
 function setup() {
   createCanvas(720, 720);
   frameRate(FPS);
+  noFill();
 }
 
 function draw() {
@@ -33,10 +34,16 @@ function draw() {
   const weight = map(mouseX, 0, 720, 1, 20);
   stroke(r, g, b);
   strokeWeight(weight);
-  line(x1, y1, x2, y2);
+  paint(x1, y1, x2, y2);
 
   const speed = map(mouseY, 0, 720, 1, 10);
   frameRate(speed);
+}
+
+function paint(x1, y1, x2, y2) {
+  const controlPoints = [1, 1, 1, 1]
+    .map(_ => round(random(0, 720)));
+  bezier(x1, y1, ...controlPoints, x2, y2);
 }
 
 function keyReleased() {
