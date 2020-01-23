@@ -38,18 +38,40 @@ function draw() {
   const color = random(palette);
   const weight = round(random(5, 20));
 
-  stroke(...color);
   strokeWeight(weight);
-  paint(x1, y1, x2, y2);
+  splash(x1, y1, x2, y2, color);
 
   const speed = map(mouseY, 0, 720, 1, 10);
   frameRate(speed);
 }
 
-function paint(x1, y1, x2, y2) {
+function splash(x1, y1, x2, y2, color) {
+  stroke(...color);
+
   const controlPoints = [1, 1, 1, 1]
     .map(_ => round(random(0, 720)));
-  bezier(x1, y1, ...controlPoints, x2, y2);
+  const bezierPoints = [x1, y1, ...controlPoints, x2, y2];
+  bezier(...bezierPoints);
+
+  noStroke();
+  fill(...color);
+
+  const dropCount = round(random(1, 10));
+  randomDrops(dropCount, bezierPoints, color);
+
+  noFill();
+}
+
+function randomDrops(n, bezierPoints, color) {
+  const [x1, y1, cx1, cy1, cx2, cy2, x2, y2] = [...bezierPoints];
+  const size = random(2, 20);
+  for (let i = 0; i < n; i++) {
+    const xoffset = random(-40, +40);
+    const yoffset = random(-40, +40);
+    const x = bezierPoint(x1, cx1, cx2, x2, i / n) + xoffset;
+    const y = bezierPoint(y1, cy1, cy2, y2, i / n) + yoffset;
+    ellipse(x, y, size, size);
+  }
 }
 
 function keyReleased() {
