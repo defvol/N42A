@@ -21,8 +21,8 @@ function setup() {
 
   for (let i = 0; i < 5; i++) {
     const H = random(360);
-    const S = random(100);
-    const B = random(100);
+    const S = i % 2 === 0 ? random(100) : 100;
+    const B = i % 2 === 0 ? 100 : random(100);
     palette.push([H, S, B]);
   }
 }
