@@ -2,7 +2,6 @@
  * Random strokes with user-controlled parameters
  *
  * MOUSE
- * position x          : stroke weight
  * position y          : stroke speed
  *
  * KEYS
@@ -31,7 +30,7 @@ function draw() {
   const g = round(random(0, 255));
   const b = round(random(0, 255));
 
-  const weight = map(mouseX, 0, 720, 1, 20);
+  const weight = round(random(5, 20));
   stroke(r, g, b);
   strokeWeight(weight);
   paint(x1, y1, x2, y2);
