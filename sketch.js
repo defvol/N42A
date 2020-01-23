@@ -11,11 +11,20 @@
 
 let FPS = 1;
 let stopToggle = false;
+const palette = [];
 
 function setup() {
   createCanvas(720, 720);
   frameRate(FPS);
   noFill();
+  colorMode(HSB, 360, 100, 100, 1);
+
+  for (let i = 0; i < 5; i++) {
+    const H = random(360);
+    const S = random(100);
+    const B = random(100);
+    palette.push([H, S, B]);
+  }
 }
 
 function draw() {
@@ -26,12 +35,10 @@ function draw() {
   const x2 = round(random(0, 720));
   const y2 = round(random(0, 720));
 
-  const r = round(random(0, 255));
-  const g = round(random(0, 255));
-  const b = round(random(0, 255));
-
+  const color = random(palette);
   const weight = round(random(5, 20));
-  stroke(r, g, b);
+
+  stroke(...color);
   strokeWeight(weight);
   paint(x1, y1, x2, y2);
 
