@@ -14,7 +14,7 @@ let stopToggle = false;
 const palette = [];
 
 function setup() {
-  createCanvas(720, 720);
+  createCanvas(960, 540);
   frameRate(FPS);
   noFill();
   colorMode(HSB, 360, 100, 100, 1);
@@ -30,10 +30,10 @@ function setup() {
 function draw() {
   if (stopToggle == true) return;
 
-  const x1 = round(random(0, 720));
-  const y1 = round(random(0, 720));
-  const x2 = round(random(0, 720));
-  const y2 = round(random(0, 720));
+  const x1 = round(random(0, width));
+  const y1 = round(random(0, height));
+  const x2 = round(random(0, width));
+  const y2 = round(random(0, height));
 
   const color = random(palette);
   const weight = round(random(5, 20));
@@ -41,7 +41,7 @@ function draw() {
   strokeWeight(weight);
   splash(x1, y1, x2, y2, color);
 
-  const speed = map(mouseY, 0, 720, 1, 10);
+  const speed = map(mouseY, 0, height, 1, 10);
   frameRate(speed);
 }
 
@@ -49,7 +49,7 @@ function splash(x1, y1, x2, y2, color) {
   stroke(...color);
 
   const controlPoints = [1, 1, 1, 1]
-    .map(_ => round(random(0, 720)));
+    .map((_, i) => round(random(0, i % 2 ? height : width)));
   const bezierPoints = [x1, y1, ...controlPoints, x2, y2];
   bezier(...bezierPoints);
 
