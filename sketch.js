@@ -42,7 +42,7 @@ function draw() {
   strokeWeight(weight);
   splash(x1, y1, x2, y2, color);
 
-  const speed = map(mouseY, 0, height, 1, 10);
+  const speed = map(mouseY, 0, height, 1, 30);
   frameRate(speed);
 }
 
