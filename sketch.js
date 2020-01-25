@@ -5,7 +5,8 @@
  * position y          : stroke speed
  *
  * KEYS
- * s                   : stop
+ * p                   : pause
+ * s                   : save
  */
 'use strict';
 
@@ -75,5 +76,12 @@ function randomDrops(n, bezierPoints, color) {
 }
 
 function keyReleased() {
-  if (key == 's' || key == 'S') stopToggle = !stopToggle;
+  switch (key) {
+    case 'p':
+      stopToggle = !stopToggle;
+      break;
+    case 's':
+      saveCanvas('canvas', 'jpg');
+      break;
+  }
 }
