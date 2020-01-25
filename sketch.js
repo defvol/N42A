@@ -37,7 +37,7 @@ function draw() {
   const y2 = round(random(0, height));
 
   const color = random(palette);
-  const weight = round(random(5, 20));
+  const weight = round(random(2, 8));
 
   strokeWeight(weight);
   splash(x1, y1, x2, y2, color);
